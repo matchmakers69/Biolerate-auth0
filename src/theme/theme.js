@@ -3,6 +3,8 @@ const theme = {
     pureWhite: '#FFFFFF',
     menuGrey: '#888c97',
     menuLightGrey: '#bbbbc3',
+    mediumBlue: '#5889e5',
+    lightBlue: '#edf4fe',
     navyBlue: '#38445e',
     borderGrey: '#f1f1f8',
   },
