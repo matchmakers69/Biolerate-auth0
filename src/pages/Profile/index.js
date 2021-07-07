@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import SeoWrapper from 'SeoWrapper';
+import { Styled as StyledGrid } from 'styles/grid.styled';
 
 const Profile = () => {
   useEffect(() => {
@@ -13,7 +14,9 @@ const Profile = () => {
       bodyClass="page--profile"
       seoProps={{ title: 'User profile', description: 'Biorelate profile page description' }}
     >
-      This is Profile page
+      <StyledGrid.PageContent>
+        <StyledGrid.Container>dd</StyledGrid.Container>
+      </StyledGrid.PageContent>
     </SeoWrapper>
   );
 };

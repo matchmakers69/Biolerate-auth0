@@ -2,12 +2,13 @@ const theme = {
   colors: {
     pureWhite: '#FFFFFF',
     menuGrey: '#888c97',
+    menuLightGrey: '#bbbbc3',
     navyBlue: '#38445e',
-    borderGrey: '#f7f7f9',
+    borderGrey: '#f1f1f8',
   },
-  fonts: ['sans-serif', 'Roboto'],
+  fonts: ['sans-serif', 'Inter'],
   fontSizes: {
-    small: '1.2rem',
+    small: '1.4rem',
     medium: '1.8rem',
     large: '2.2rem',
   },

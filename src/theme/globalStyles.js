@@ -32,6 +32,7 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     display: flex;
     flex-direction: column;
+  
   }
 
   `;
