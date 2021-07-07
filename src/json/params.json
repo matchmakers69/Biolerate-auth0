@@ -1,0 +1,9 @@
+
+{
+    "domain": "dev-h7rcrzi5.eu.auth0.com",
+    "clientId": "oqFwQOwcuC5fqqITBkVOBvGntotirQz6",
+    "callbackUrl": "http://localhost:8080/profile",
+    "scope":"openid profile"
+  }
+
+
