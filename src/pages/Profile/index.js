@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import SeoWrapper from 'SeoWrapper';
 
 const Profile = () => {
   useEffect(() => {
@@ -7,7 +8,14 @@ const Profile = () => {
 
     checkAuth();
   }, []);
-  return <div>This is Profile page</div>;
+  return (
+    <SeoWrapper
+      bodyClass="page--profile"
+      seoProps={{ title: 'User profile', description: 'Biorelate profile page description' }}
+    >
+      This is Profile page
+    </SeoWrapper>
+  );
 };
 
 Profile.propTypes = {};

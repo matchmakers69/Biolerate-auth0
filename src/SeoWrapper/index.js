@@ -2,10 +2,11 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import Seo from 'components/Seo';
+import { Styled } from 'styles/grid.styled';
 
 const SeoWrapper = ({ bodyClass = 'page', seoProps = {}, children = [] }) => {
   return (
-    <div className="page-wrapper">
+    <Styled.MainContent>
       <Helmet
         bodyAttributes={{
           class: bodyClass,
@@ -14,7 +15,7 @@ const SeoWrapper = ({ bodyClass = 'page', seoProps = {}, children = [] }) => {
       <Seo {...seoProps} />
 
       {children}
-    </div>
+    </Styled.MainContent>
   );
 };
 
