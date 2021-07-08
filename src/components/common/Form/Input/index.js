@@ -20,11 +20,18 @@ const INPUT = {
   password: (props) => <InputText type="password" {...props} />,
 };
 
-const Input = ({ type = '', register, placeholder, name, isRequired = false }) => {
+const Input = ({ type = '', register, placeholder, name, isRequired = false, error = {} }) => {
   const InputComponent = INPUT[type];
   return (
     <>
-      <InputComponent register={register} name={name} type={type} isRequired={isRequired} placeholder={placeholder} />
+      <InputComponent
+        register={register}
+        name={name}
+        type={type}
+        isRequired={isRequired}
+        placeholder={placeholder}
+        error={error}
+      />
     </>
   );
 };
