@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { constants } from '../../../constants';
 import { logout } from 'store/auth/actions';
 import { ReactComponent as UserIcon } from 'assets/icons/svg/user.svg';
-import Button, { BUTTON_TYPE } from 'components/common/Button';
+import Button, { BUTTON_COLOR } from 'components/common/Button';
 
 const { LOGIN, ROOT } = constants.route;
 
@@ -41,9 +41,9 @@ const UserNavbar = ({ history }) => {
 
         <Styled.PanelUserListItem>
           {objAuthUser ? (
-            <Button variant={BUTTON_TYPE.PRIMARY} onClick={handleLogout} text="Log out" />
+            <Button variant={BUTTON_COLOR.PRIMARY} onClick={handleLogout} text="Log out" />
           ) : (
-            <Button variant={BUTTON_TYPE.PRIMARY} onClick={handleLogin} text="Log in" />
+            <Button variant={BUTTON_COLOR.PRIMARY} onClick={handleLogin} text="Log in" />
           )}
         </Styled.PanelUserListItem>
       </Styled.PanelUserList>

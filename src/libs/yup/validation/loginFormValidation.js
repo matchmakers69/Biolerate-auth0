@@ -6,5 +6,5 @@ export const loginSchema = yup.object().shape({
     .string()
     .required('Please enter your password')
     .min(6, 'Password must be at least 6 characters')
-    .max(10, 'Password too long'),
+    .max(20, 'Password too long'),
 });

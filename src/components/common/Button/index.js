@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { Btn } from './Button.styled';
 
-export const BUTTON_TYPE = {
+export const BUTTON_COLOR = {
   PRIMARY: clsx('primaryButton'),
+  LONG: clsx('longButton'),
 };
 
-const Button = ({ variant = '', text = '', onClick }) => {
+export const BUTTON_SIZE = {
+  LONG: clsx('longButton'),
+};
+
+const Button = ({ size = '', variant = '', text = '', onClick = () => {}, disabled = false }) => {
   return (
-    <Btn onClick={onClick} className={clsx([variant])}>
+    <Btn disabled={disabled} onClick={onClick} className={clsx([variant], [size])}>
       {text}
     </Btn>
   );
@@ -18,7 +23,9 @@ const Button = ({ variant = '', text = '', onClick }) => {
 Button.propTypes = {
   variant: PropTypes.string,
   text: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  size: PropTypes.string,
 };
 
 export default Button;

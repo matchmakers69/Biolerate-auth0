@@ -35,6 +35,13 @@ const GlobalStyles = createGlobalStyle`
   
   }
 
+  .form-group {
+      margin-bottom: 2.5rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+  }
+
   `;
 
 export default GlobalStyles;

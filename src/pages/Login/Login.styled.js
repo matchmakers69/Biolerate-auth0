@@ -25,7 +25,7 @@ const ColumnLoginForm = styled.div`
 `;
 
 const LoginDetailsWrapper = styled.div`
-  padding: 6rem 6rem 20rem 6rem;
+  padding: 6rem 6rem 12rem 6rem;
   max-width: 80%;
   width: 100%;
 `;

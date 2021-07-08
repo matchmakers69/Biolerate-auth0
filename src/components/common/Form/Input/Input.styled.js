@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const sharedStyles = css`
   background-color: ${({ theme: { colors } }) => colors.pureWhite};
   border-radius: 4px;
-  height: 4rem;
+  height: 4.5rem;
   border: 1px solid ${({ theme: { colors } }) => colors.borderGrey};
   padding: 10px;
   color: ${({ theme: { colors } }) => colors.menuGrey};

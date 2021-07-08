@@ -12,7 +12,14 @@ export const Btn = styled.button`
   justify-content: center;
   color: ${({ theme: { colors } }) => colors.pureWhite};
   font-weight: 600;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
   &.primaryButton {
     background-color: ${({ theme: { colors } }) => colors.mediumBlue};
+  }
+  &.longButton {
+    min-width: 100%;
   }
 `;
