@@ -1,4 +1,4 @@
-import { SET_AUTHENTICATION, SET_USER_FROM_TOKEN } from './types';
+import { SET_AUTHENTICATION, SET_USER_FROM_TOKEN, LOGOUT_USER } from './types';
 
 const objInitialState = {
   objAuthData: null,
@@ -17,6 +17,13 @@ const authReducer = (state = objInitialState, action) => {
       return {
         ...state,
         objAuthUser: action.payload.userData,
+      };
+    }
+    case LOGOUT_USER: {
+      return {
+        ...state,
+        objAuthData: null,
+        objAuthUser: null,
       };
     }
     default:

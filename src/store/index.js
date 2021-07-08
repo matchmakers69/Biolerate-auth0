@@ -20,9 +20,6 @@ const store = configureStore({
   middleware: [
     ...getDefaultMiddleware({
       serializableCheck: false,
-      // serializableCheck: {
-      //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      // },
     }),
   ],
   devTools: process.env.NODE_ENV !== 'production',

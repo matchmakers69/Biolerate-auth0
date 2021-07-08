@@ -1,19 +1,20 @@
 import React from 'react';
 import { Styled } from './UserNavbar.styled';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { constants } from '../../../constants';
+import { logout } from 'store/auth/actions';
 import { ReactComponent as UserIcon } from 'assets/icons/svg/user.svg';
 import Button, { BUTTON_TYPE } from 'components/common/Button';
 
-const { LOGIN } = constants.route;
+const { LOGIN, ROOT } = constants.route;
 
-const UserNavbar = () => {
+const UserNavbar = ({ history }) => {
   const {
     auth: { objAuthUser },
   } = useSelector((state) => state);
 
-  const history = useHistory();
+  const dispatch = useDispatch();
 
   const renderUserAvatar = objAuthUser ? (
     <Styled.AvatarUser>
@@ -30,7 +31,7 @@ const UserNavbar = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('persist:root');
+    dispatch(logout(history));
   };
 
   return (
@@ -50,4 +51,4 @@ const UserNavbar = () => {
   );
 };
 
-export default UserNavbar;
+export default withRouter(UserNavbar);

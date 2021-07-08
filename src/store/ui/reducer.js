@@ -2,7 +2,7 @@ import { UPDATE_APP_UI } from './types';
 
 const objInitialState = {
   displayHeader: true,
-  displayFooter: true,
+  displayFooter: false,
 };
 
 const updateUiReducer = (state = objInitialState, action) => {
