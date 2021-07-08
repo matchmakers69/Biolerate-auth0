@@ -6,6 +6,7 @@ import { Styled } from './/Login.styled';
 import LoginForm from 'components/Auth/LoginForm';
 import { updateUI } from 'store/ui/actions';
 import { constants } from '../../constants';
+import { H1 } from 'styles/typography.styled';
 
 const { PROFILE } = constants.route;
 
@@ -54,6 +55,7 @@ const Login = () => {
       <Styled.LoginPageWrapper>
         <Styled.ColumnLoginForm>
           <Styled.LoginDetailsWrapper>
+            <H1>Log in</H1>
             <LoginForm />
           </Styled.LoginDetailsWrapper>
         </Styled.ColumnLoginForm>

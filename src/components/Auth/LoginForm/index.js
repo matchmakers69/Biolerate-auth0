@@ -1,29 +1,36 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { setAuthCredentials } from 'store/auth/actions';
 import { auth0Client } from 'config/auth0';
-import PropTypes from 'prop-types';
+import { loginSchema } from 'libs/yup/validation/loginFormValidation';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Styled } from 'components/common/Form/Input/Input.styled';
+import Input from 'components/common/Form/Input';
 import { constants } from '../../../constants';
 
 const { PROFILE } = constants.route;
 
-const LoginForm = (props) => {
+const LoginForm = () => {
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const [loginDetails, setLoginDetails] = useState({
-    email: '',
-    password: '',
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isValid },
+    reset,
+  } = useForm({
+    mode: 'onChange',
+    resolver: yupResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
   });
 
-  const handleFormLoginChange = (e) => {
-    const { name, value } = e.target;
-    setLoginDetails((prevstate) => ({
-      ...prevstate,
-      [name]: value,
-    }));
-  };
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const login = (username, password) => {
     setLoading(true);
@@ -48,44 +55,56 @@ const LoginForm = (props) => {
     );
   };
 
-  const handleLoginFormSubmit = (e) => {
-    e.preventDefault();
-    const { email, password } = loginDetails;
+  const handleLoginFormSubmit = (data) => {
+    const { email, password } = data;
+
+    // Auth0 login integration
     login(email, password);
+
+    setTimeout(() => {
+      reset({
+        email: '',
+        password: '',
+      });
+    }, 300);
   };
-  const { email, password } = loginDetails;
+
   if (loading) {
     return <span>Loading...</span>;
   }
   return (
     <>
-      <form autoComplete="false" noValidate onSubmit={handleLoginFormSubmit}>
+      <form autoComplete="false" noValidate onSubmit={handleSubmit(handleLoginFormSubmit)}>
         <div className="form-group">
-          <label>Email</label>
-          <input
-            name="email"
-            value={email}
-            onChange={handleFormLoginChange}
+          <Styled.InputLabel htmlFor="email">Email</Styled.InputLabel>
+          <Input
+            id="email"
             type="email"
+            name="email"
+            register={register}
+            isRequired
             placeholder="Enter your email"
+            error={errors.email}
           />
         </div>
         <div className="form-group">
-          <label>Password</label>
-          <input
-            name="password"
-            value={password}
-            onChange={handleFormLoginChange}
-            placeholder="*****"
+          <Styled.InputLabel htmlFor="password">Password</Styled.InputLabel>
+          <Input
+            id="password"
             type="password"
+            name="password"
+            register={register}
+            isRequired
+            placeholder="*************"
+            error={errors.password}
           />
         </div>
-        <button type="submit">Send</button>
+        <button disabled={!isValid} type="submit">
+          Send
+        </button>
       </form>
     </>
   );
 };
-
-LoginForm.propTypes = {};
 
 export default LoginForm;
