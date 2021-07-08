@@ -27,7 +27,9 @@ const Profile = ({ routes }) => {
             <div className="wrapper">
               <Switch>
                 <Redirect from={PROFILE} exact to={PROFILE_GENERAL} />
+
                 {routes.map((route, i) => (
+                  // Not the greatest practise to pass index as a key  ;)
                   <RouteWithSubRoutes key={i} {...route} />
                 ))}
               </Switch>

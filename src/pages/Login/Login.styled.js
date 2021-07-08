@@ -10,7 +10,6 @@ const LoginPageWrapper = styled.div`
   height: 100%;
   display: flex;
   position: relative;
-  background-color: red;
 `;
 
 const ColumnLoginForm = styled.div`
