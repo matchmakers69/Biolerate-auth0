@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { H1 } from 'styles/typography.styled';
+import AccountTemplate from 'templates/AccountTemplate';
 import SeoWrapper from 'SeoWrapper';
 import { Styled as StyledGrid } from 'styles/grid.styled';
 
@@ -15,12 +16,15 @@ const Profile = () => {
       seoProps={{ title: 'User profile', description: 'Biorelate profile page description' }}
     >
       <StyledGrid.PageContent>
-        <StyledGrid.Container>dd</StyledGrid.Container>
+        <StyledGrid.Container>
+          <H1>Account settings</H1>
+          <AccountTemplate>
+            <div className="wrapper">Lista</div>
+          </AccountTemplate>
+        </StyledGrid.Container>
       </StyledGrid.PageContent>
     </SeoWrapper>
   );
 };
-
-Profile.propTypes = {};
 
 export default Profile;
