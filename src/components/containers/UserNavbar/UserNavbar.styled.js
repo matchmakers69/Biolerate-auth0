@@ -25,7 +25,7 @@ const PanelUserList = styled.ul`
 `;
 
 const PanelUserListItem = styled.li`
-  margin-right: 15px;
+  margin-right: 20px;
   &:last-child {
     margin-right: 0;
   }

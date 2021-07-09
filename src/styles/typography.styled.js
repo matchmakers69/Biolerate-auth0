@@ -15,3 +15,11 @@ export const H2 = styled.h2`
   font-weight: 700;
   color: ${({ theme: { colors } }) => colors.navyBlue};
 `;
+
+export const H3 = styled.h3`
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.medium};
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 700;
+  color: ${({ theme: { colors } }) => colors.navyBlue};
+`;

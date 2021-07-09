@@ -13,9 +13,15 @@ const ToggleContextButton = styled.button`
   height: 5rem;
   width: 5rem;
   overflow: hidden;
+  cursor: pointer;
   border: none;
   background-color: ${({ theme: { colors } }) => colors.pureWhite};
-  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.37);
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.17);
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const Styled = {
