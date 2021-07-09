@@ -1,4 +1,4 @@
-import { SET_AUTHENTICATION, SET_USER_FROM_TOKEN, LOGOUT_USER } from './types';
+import { SET_AUTHENTICATION, SET_USER_FROM_TOKEN, LOGOUT_USER, UPDATE_USER_PROFILE } from './types';
 
 const objInitialState = {
   objAuthData: null,
@@ -24,6 +24,15 @@ const authReducer = (state = objInitialState, action) => {
         ...state,
         objAuthData: null,
         objAuthUser: null,
+      };
+    }
+
+    case UPDATE_USER_PROFILE: {
+      const updatedProfile = { ...state.objAuthUser, ...action.payload.profileData };
+
+      return {
+        ...state,
+        objAuthUser: updatedProfile,
       };
     }
     default:

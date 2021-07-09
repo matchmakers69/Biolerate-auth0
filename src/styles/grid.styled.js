@@ -18,6 +18,8 @@ const PageContent = styled.div`
   padding-top: 4rem;
 `;
 
+const SubPageContent = styled.div``;
+
 const Container = styled.div`
   width: 100%;
   padding: 0 6.25rem;
@@ -38,4 +40,5 @@ export const Styled = {
   Container,
   PageContent,
   MainContentFull,
+  SubPageContent,
 };

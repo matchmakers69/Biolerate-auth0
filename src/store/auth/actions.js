@@ -1,4 +1,4 @@
-import { SET_AUTHENTICATION, SET_USER_FROM_TOKEN, LOGOUT_USER } from './types';
+import { SET_AUTHENTICATION, SET_USER_FROM_TOKEN, LOGOUT_USER, UPDATE_USER_PROFILE } from './types';
 import { getUserFromToken } from './auth.service';
 import { constants } from '../../constants';
 import { persistor } from 'store';
@@ -37,4 +37,13 @@ export const logout = (history) => (dispatch) => {
   // localStorage.removeItem('persist:root');
   persistor.purge();
   history.push(ROOT);
+};
+
+export const updateUserProfile = (profileData) => (dispatch) => {
+  dispatch({
+    type: UPDATE_USER_PROFILE,
+    payload: {
+      profileData,
+    },
+  });
 };
