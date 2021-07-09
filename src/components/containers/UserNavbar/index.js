@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { constants } from '../../../constants';
 import { logout } from 'store/auth/actions';
+import HeaderContextMenu from 'components/containers/Header/HeaderContextMenu';
 import { ReactComponent as UserIcon } from 'assets/icons/svg/user.svg';
 import Button, { BUTTON_COLOR } from 'components/common/Button';
 
-const { LOGIN, ROOT } = constants.route;
+const { LOGIN } = constants.route;
 
 const UserNavbar = ({ history }) => {
   const {
@@ -37,6 +38,9 @@ const UserNavbar = ({ history }) => {
   return (
     <Styled.UserNavbarPanel>
       <Styled.PanelUserList>
+        <Styled.PanelUserListItem>
+          <HeaderContextMenu />
+        </Styled.PanelUserListItem>
         <Styled.PanelUserListItem>{renderUserAvatar}</Styled.PanelUserListItem>
 
         <Styled.PanelUserListItem>
