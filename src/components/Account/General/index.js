@@ -1,16 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { H2 } from 'styles/typography.styled';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Styled as FormStyled } from 'components/common/Form/Input/Input.styled';
 import Input from 'components/common/Form/Input';
 import Button, { BUTTON_COLOR } from 'components/common/Button';
 import { Styled } from './General.styled';
+import { profilSchema } from 'libs/yup/validation/updateProfileSchema';
 import { updateUserProfile } from 'store/auth/actions';
 import { Styled as StyledGrid } from 'styles/grid.styled';
 
-const General = (props) => {
+const General = () => {
   const dispatch = useDispatch();
   const {
     auth: { objAuthUser },
@@ -21,10 +22,9 @@ const General = (props) => {
     handleSubmit,
     register,
     formState: { errors, isValid },
-    reset,
   } = useForm({
     mode: 'onChange',
-    // resolver: yupResolver(loginSchema),
+    resolver: yupResolver(profilSchema),
     defaultValues: {
       nickname,
       name,
@@ -72,12 +72,10 @@ const General = (props) => {
             </div>
           </Styled.FormColumn>
         </Styled.FormColumnsContainer>
-        <Button type="submit" variant={BUTTON_COLOR.PRIMARY} text="Save changes" />
+        <Button disabled={!isValid} type="submit" variant={BUTTON_COLOR.PRIMARY} text="Save changes" />
       </Styled.ProfileForm>
     </StyledGrid.SubPageContent>
   );
 };
-
-General.propTypes = {};
 
 export default General;
