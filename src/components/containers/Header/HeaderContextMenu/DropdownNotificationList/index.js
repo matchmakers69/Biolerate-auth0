@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { H3 } from 'styles/typography.styled';
 import { Styled } from './DropdownNotificationList.styled';
 
-const DropdownNotificationList = (props) => {
+const DropdownNotificationList = ({ loading = false }) => {
   return (
     <Styled.DropdownList>
       <Styled.MenuHeader>
@@ -11,11 +11,13 @@ const DropdownNotificationList = (props) => {
           <H3>Notification</H3>
         </Styled.MenuHeaderDetails>
       </Styled.MenuHeader>
-      <Styled.DropDownList>vffse</Styled.DropDownList>
+      {loading ? <span>Is loading...</span> : <Styled.DropDownList>vffse</Styled.DropDownList>}
     </Styled.DropdownList>
   );
 };
 
-DropdownNotificationList.propTypes = {};
+DropdownNotificationList.propTypes = {
+  loading: PropTypes.bool,
+};
 
 export default DropdownNotificationList;
