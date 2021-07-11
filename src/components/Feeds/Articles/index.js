@@ -5,7 +5,7 @@ import _slice from 'lodash/slice';
 import _concat from 'lodash/concat';
 import { H2 } from 'styles/typography.styled';
 import { LIMIT_QUANTITY } from 'utils/limit';
-import { ArticleList } from './Articles.styled';
+import { ArticleList, LoadMoreWrapper } from './Articles.styled';
 import { H3 } from 'styles/typography.styled';
 
 const Articles = () => {
@@ -70,7 +70,14 @@ const Articles = () => {
           );
         })}
       </ArticleList>
-      {showMore && <button onClick={loadMoreArticles}> Load More </button>}
+      {showMore && (
+        <LoadMoreWrapper>
+          <button className="load-more-button" type="button" onClick={loadMoreArticles}>
+            {' '}
+            Load More{' '}
+          </button>
+        </LoadMoreWrapper>
+      )}
     </StyledGrid.SubPageContent>
   );
 };

@@ -20,3 +20,23 @@ export const ArticleList = styled.ul`
     }
   }
 `;
+
+export const LoadMoreWrapper = styled.div`
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .load-more-button {
+    border: none;
+    cursor: pointer;
+    height: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: ${({ theme: { colors } }) => colors.pureWhite};
+    background-color: ${({ theme: { colors } }) => colors.navyBlue};
+    padding: 0 22px;
+    font-weight: 600;
+  }
+`;
