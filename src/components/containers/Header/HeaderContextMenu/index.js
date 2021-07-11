@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { ReactComponent as BellIIcon } from 'assets/icons/svg/bell.svg';
 import { ReactComponent as CloseIcon } from 'assets/icons/svg/cancel.svg';
 import DropdownNotificationList from './DropdownNotificationList';
 import { fetchNotification } from 'api/notification';
+import { LIMIT_QUANTITY } from 'utils/limit';
 import { Styled } from './HeaderContextMenu.styled';
-
-const INITIAL_NOTIFICATION_QUANTITY = 10;
 
 const HeaderContextMenu = () => {
   const [isDropDownVisible, setisDropDownVisible] = useState(false);
@@ -16,16 +14,17 @@ const HeaderContextMenu = () => {
   const [error, setError] = useState(null);
 
   const handleFetchNotification = async () => {
+    setLoading(true);
     try {
       const response = await fetchNotification();
       const sortedNotifications = [...response]
         .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-        .slice(0, INITIAL_NOTIFICATION_QUANTITY);
+        .slice(0, LIMIT_QUANTITY);
 
       setNotification(!isDropDownVisible ? sortedNotifications : response);
       setLoading(false);
     } catch (err) {
-      console.log(err);
+      setError(err);
     }
   };
 
@@ -58,7 +57,5 @@ const HeaderContextMenu = () => {
     </Styled.ContextWrapper>
   );
 };
-
-HeaderContextMenu.propTypes = {};
 
 export default HeaderContextMenu;
