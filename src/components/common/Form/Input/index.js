@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Styled } from './Input.styled';
 
-export const InputText = ({ type = '', register, placeholder, isRequired = false, name, error = {} }) => {
+export const InputHookForm = ({ type = '', register, placeholder, isRequired = false, name, error = {} }) => {
   return (
     <Styled.InputWrapper>
       <Styled.InputField placeholder={placeholder} {...register(name, { required: isRequired })} type={type} />
@@ -15,9 +15,9 @@ export const InputText = ({ type = '', register, placeholder, isRequired = false
  * Object @INPUT will be a mappaer, where keys are possible types for Input
  */
 const INPUT = {
-  text: (props) => <InputText type="text" {...props} />,
-  email: (props) => <InputText type="email" {...props} />,
-  password: (props) => <InputText type="password" {...props} />,
+  text: (props) => <InputHookForm type="text" {...props} />,
+  email: (props) => <InputHookForm type="email" {...props} />,
+  password: (props) => <InputHookForm type="password" {...props} />,
 };
 
 const Input = ({ type = '', register, placeholder, name, isRequired = false, error = {} }) => {
