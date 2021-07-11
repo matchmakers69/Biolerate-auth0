@@ -9,8 +9,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from 'app/App';
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 /**
  * Component @Suspense will track down the progress of loading compo0nents
  * Atribute @fallback will be displayed till component is still loading
@@ -28,9 +26,9 @@ ReactDOM.render(
       <ConnectedRouter history={history}>
         <PersistGate loading={null} persistor={persistor}>
           <BrowserRouter>
-            <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin}>
+           
               <App />
-            </Auth0Provider>
+  
           </BrowserRouter>
         </PersistGate>
       </ConnectedRouter>
