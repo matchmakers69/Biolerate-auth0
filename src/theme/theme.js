@@ -1,20 +1,21 @@
 const theme = {
   colors: {
     pureWhite: '#FFFFFF',
-    menuGrey: '#888c97',
+    menuGrey: '#868DA1',
     menuLightGrey: '#bbbbc3',
-    mediumBlue: '#5889e5',
+    mediumBlue: '#1A88E8',
     lightBlue: '#edf4fe',
-    navyBlue: '#38445e',
-    borderGrey: '#f1f0f5',
+    navyBlue: '#344562',
+    borderGrey: '#F6F7FA',
     errorRed: '#c01010',
   },
   fonts: ['sans-serif', 'Inter'],
   fontSizes: {
     small: '1.4rem',
     medium: '1.6rem',
-    large: '2.2rem',
-    xlarge: '3.6rem',
+    xmedium: '1.8rem',
+    large: '2.4rem',
+    xlarge: '4.8rem',
   },
 };
 

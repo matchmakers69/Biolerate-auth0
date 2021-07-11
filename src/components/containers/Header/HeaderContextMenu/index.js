@@ -10,6 +10,7 @@ const INITIAL_NOTIFICATION_QUANTITY = 10;
 
 const HeaderContextMenu = () => {
   const [isDropDownVisible, setisDropDownVisible] = useState(false);
+  const [isViewAll, setIsViewAll] = useState(false);
   const [notification, setNotification] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -21,7 +22,7 @@ const HeaderContextMenu = () => {
         .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
         .slice(0, INITIAL_NOTIFICATION_QUANTITY);
 
-      setNotification(sortedNotifications);
+      setNotification(!isDropDownVisible ? sortedNotifications : response);
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -34,12 +35,26 @@ const HeaderContextMenu = () => {
       handleFetchNotification();
     }
   };
+
+  const handleToogleViewAllNotification = () => {
+    setIsViewAll(!isViewAll);
+    if (!isViewAll) {
+      handleFetchNotification();
+    }
+  };
+
   return (
     <Styled.ContextWrapper>
       <Styled.ToggleContextButton onClick={handleToggleDropDownVisible}>
         {!isDropDownVisible ? <BellIIcon /> : <CloseIcon />}
       </Styled.ToggleContextButton>
-      {isDropDownVisible && <DropdownNotificationList loading={loading} />}
+      {isDropDownVisible && (
+        <DropdownNotificationList
+          data={notification}
+          handleAllNotification={handleToogleViewAllNotification}
+          loading={loading}
+        />
+      )}
     </Styled.ContextWrapper>
   );
 };

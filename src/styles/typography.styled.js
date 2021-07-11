@@ -17,7 +17,7 @@ export const H2 = styled.h2`
 `;
 
 export const H3 = styled.h3`
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.medium};
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.xmedium};
   margin: 0;
   line-height: 1.2;
   font-weight: 700;
