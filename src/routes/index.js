@@ -1,5 +1,5 @@
 import React from 'react';
-import routes from 'config/routesMapper';
+import { mainRoutes } from 'config/routesMapper';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import PrivateRoute from 'components/Auth/PrivateRoute';
 import { constants } from '../constants';
@@ -12,10 +12,11 @@ const Routes = () => {
   return (
     <>
       <Switch>
-        {routes.map(({ isPrivate, ...props }) => {
+        <Route exact path={ROOT} render={() => <Redirect to={LOGIN} />} />
+        {mainRoutes.map(({ isPrivate, ...props }) => {
           return isPrivate ? <PrivateRoute key={props.path} {...props} /> : <Route key={props.path} {...props} />;
         })}
-        <Route exact path={ROOT} render={() => <Redirect to={LOGIN} />} />
+
         <Route exact component={Login} path={LOGIN} />
         <Route path="*" component={NotFound} />
       </Switch>
