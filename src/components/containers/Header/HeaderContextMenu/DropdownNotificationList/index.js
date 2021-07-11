@@ -4,7 +4,6 @@ import { H3 } from 'styles/typography.styled';
 import { Styled } from './DropdownNotificationList.styled';
 
 const DropdownNotificationList = ({ loading = false, handleAllNotification = () => {}, data }) => {
-  console.log(data);
   return (
     <Styled.DropdownList>
       <Styled.MenuHeader>
