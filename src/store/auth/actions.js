@@ -1,4 +1,4 @@
-import { SET_AUTHENTICATION, SET_USER_FROM_TOKEN, LOGOUT_USER, UPDATE_USER_PROFILE } from './types';
+import { SET_AUTHENTICATION, SET_USER_FROM_TOKEN, LOGOUT_USER, UPDATE_USER_PROFILE, UPDATE_ACCESSTOKEN } from './types';
 import { getUserFromToken } from './auth.service';
 import { constants } from '../../constants';
 import { persistor } from 'store';
@@ -44,6 +44,15 @@ export const updateUserProfile = (profileData) => (dispatch) => {
     type: UPDATE_USER_PROFILE,
     payload: {
       profileData,
+    },
+  });
+};
+
+export const updateAccessToken = (token) => (dispatch) => {
+  dispatch({
+    type: UPDATE_ACCESSTOKEN,
+    payload: {
+      token,
     },
   });
 };

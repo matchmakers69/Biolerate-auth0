@@ -1,33 +1,42 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Styled as FormStyled } from 'components/common/Form/Input/Input.styled';
 import Input from 'components/common/Form/Input';
-import Button, { BUTTON_COLOR } from 'components/common/Button';
 import { Styled as StyledGrid } from 'styles/grid.styled';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { H2 } from 'styles/typography.styled';
-import { useSelector } from 'react-redux';
+import { updateAccessToken } from 'store/auth/actions';
+import { tokenSchema } from 'libs/yup/validation/tokenSchema';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Api = (props) => {
+  const [copied, setCopied] = useState(false);
   const {
     auth: { objAuthData },
   } = useSelector((state) => state);
   const { accessToken } = objAuthData;
 
+  const dispatch = useDispatch();
+
   const {
     handleSubmit,
     register,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm({
     mode: 'onChange',
-    // resolver: yupResolver(profilSchema),
+    resolver: yupResolver(tokenSchema),
     defaultValues: {
       accessToken,
     },
   });
 
   const handleGenerateAnotherToken = (data) => {
-    console.log(data);
+    dispatch(updateAccessToken(data));
+  };
+
+  const handleCopyToClipboard = () => {
+    setCopied(true);
   };
 
   return (
@@ -41,12 +50,18 @@ const Api = (props) => {
             type="text"
             name="accessToken"
             register={register}
-            // isRequired
+            isRequired
             placeholder="Access token"
-            // error={errors.nickname}
+            error={errors.accessToken}
           />
         </div>
+        <CopyToClipboard text={accessToken} onCopy={() => handleCopyToClipboard()}>
+          <button type="button">Copy to clipboard</button>
+        </CopyToClipboard>
+        <button type="submit">Generate another</button>
       </form>
+
+      <section className="section">{copied ? <span style={{ color: 'red' }}>Token copied</span> : null}</section>
     </StyledGrid.SubPageContent>
   );
 };
